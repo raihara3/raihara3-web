@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { Project } from "./ProjectCard";
 
 interface ProjectModalProps {
@@ -11,17 +10,26 @@ interface ProjectModalProps {
 export default function ProjectModal({ project, onClose }: ProjectModalProps) {
   if (!project) return null;
 
-  return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-      <div className="bg-zinc-900 rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto">
-        <div className="relative">
-          <button
-            onClick={onClose}
-            className="absolute top-4 right-4 z-10 text-gray-400 hover:text-white text-xl w-8 h-8 flex items-center justify-center bg-black bg-opacity-50 rounded-full"
-          >
-            ✕
-          </button>
+  const handleBackdropClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (e.target === e.currentTarget) {
+      onClose();
+    }
+  };
 
+  return (
+    <div
+      className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50"
+      onClick={handleBackdropClick}
+    >
+      <div className="bg-zinc-900 rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto relative">
+        <button
+          onClick={onClose}
+          className="absolute top-8 right-8 z-50 text-gray-400 hover:text-white text-xl w-10 h-10 flex items-center justify-center bg-black bg-opacity-70 rounded-full hover:bg-opacity-90 transition-all"
+        >
+          ✕
+        </button>
+
+        <div className="relative">
           <div className="relative w-full">
             <img
               src={project.imageUrl}
