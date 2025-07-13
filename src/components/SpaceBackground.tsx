@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useMemo } from "react";
 
 interface Planet {
   id: number;
@@ -13,9 +13,9 @@ interface Planet {
 
 export default function SpaceBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const animationRef = useRef<number>();
+  const animationRef = useRef<number>(0);
 
-  const planets: Planet[] = [
+  const planets: Planet[] = useMemo(() => [
     {
       id: 1,
       radius: 0,
@@ -40,7 +40,7 @@ export default function SpaceBackground() {
       color: "#a6a6a6",
       size: 10,
     },
-  ];
+  ], []);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -57,7 +57,7 @@ export default function SpaceBackground() {
     resizeCanvas();
     window.addEventListener("resize", resizeCanvas);
 
-    let startTime = Date.now();
+    const startTime = Date.now();
 
     const drawOrbits = () => {
       const centerX = canvas.width / 2;
@@ -110,7 +110,7 @@ export default function SpaceBackground() {
         cancelAnimationFrame(animationRef.current);
       }
     };
-  }, []);
+  }, [planets]);
 
   return (
     <canvas
