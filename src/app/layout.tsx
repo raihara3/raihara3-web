@@ -19,6 +19,7 @@ export const metadata: Metadata = {
   description: "raihara3's projects",
   icons: {
     icon: "/logo.png",
+    apple: "/logo.png",
   },
 };
 
