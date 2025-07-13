@@ -11,7 +11,7 @@
   {
     "id": "1",
     "title": "figmark",
-    "labels": ["Figma plugin"],
+    "labels": ["Plugin"],
     "description": "Figmaで好きなレイヤーをブックマークできるプラグインです。デザイン作業中に重要なレイヤーを素早く見つけられるように開発しました。",
     "detail": "Figmaでの作業効率を向上させるためのプラグインです。大規模なデザインファイルでも、お気に入りのレイヤーを簡単にブックマークして、瞬時にアクセスできます。プラグインAPIを活用して、直感的なUIと高速な検索機能を実装しています。",
     "url": "https://www.figma.com/community/plugin/1018556921170761713/figmark",

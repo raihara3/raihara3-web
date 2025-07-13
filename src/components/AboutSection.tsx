@@ -20,7 +20,7 @@ export default function AboutSection() {
   ];
 
   return (
-    <section className="py-16">
+    <section id="about" className="py-16">
       <div className="max-w-4xl mx-auto px-6">
         <h2 className="text-3xl font-bold text-white mb-8 text-center">
           About
