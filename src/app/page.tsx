@@ -42,10 +42,10 @@ export default function Home() {
       : projects.filter((project) => project.labels.includes(selectedLabel));
 
   return (
-    <div className="min-h-screen bg-gray-900">
+    <div className="min-h-screen">
       <Header />
-      
-      <main className="pt-20">
+
+      <main className="pt-20 relative z-10">
         <section id="projects" className="py-16">
           <div className="max-w-6xl mx-auto px-6">
             <h2 className="text-3xl font-bold text-white mb-12 text-center">
