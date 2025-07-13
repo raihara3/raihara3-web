@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import Image from "next/image";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -45,7 +46,16 @@ export default function Header() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-gray-900 bg-opacity-80 backdrop-blur-sm py-4 px-6">
       <nav className="max-w-6xl mx-auto flex justify-between items-center">
-        <h1 className="text-2xl font-bold text-white">raihara3</h1>
+        <div className="flex items-center gap-2">
+          <Image 
+            src="/logo.png" 
+            alt="raihara3 logo" 
+            width={32} 
+            height={32} 
+            className="w-8 h-8"
+          />
+          <h1 className="text-2xl font-bold text-white">raihara3</h1>
+        </div>
         
         <button
           className="md:hidden text-white"
