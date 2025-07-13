@@ -3,7 +3,6 @@ export default function AboutSection() {
     "Web Development",
     "Graphic Design",
     "Direction",
-    "3D Modeling",
     "WebXR",
     "TypeScript",
     "React",
@@ -35,7 +34,7 @@ export default function AboutSection() {
           <p className="text-gray-300 max-w-2xl mx-auto">
             グラフィックデザイナーからフロントエンドエンジニアへ転向。
             <br />
-            グラフィックデザイン、3Dモデリング、Webサービスの開発をして遊んでいます。
+            Webサービス・WebARの開発をして遊んでいます。
           </p>
         </div>
 

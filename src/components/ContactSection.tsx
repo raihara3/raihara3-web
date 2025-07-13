@@ -5,7 +5,7 @@ export default function ContactSection() {
         <h2 className="text-3xl font-bold text-white mb-8">Contact</h2>
 
         <p className="text-gray-300 mb-8 max-w-2xl mx-auto">
-          お仕事のご依頼やコラボレーションについてお気軽にお声がけください。
+          ご依頼やコラボレーションについてお気軽にお声がけください。
         </p>
 
         <div className="flex justify-center">
