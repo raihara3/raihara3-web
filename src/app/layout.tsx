@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "raihara3 - Portfolio",
-  description: "Frontend Engineer / WebXR Engineer - raihara3のポートフォリオサイト",
+  title: "raihara3",
+  description: "raihara3's projects",
 };
 
 export default function RootLayout({

@@ -2,10 +2,28 @@
   {
     "id": "1",
     "title": "figmark",
-    "labels": ["Figma Plugin", "JavaScript", "UI/UX"],
+    "labels": ["Figma plugin"],
     "description": "Figmaで好きなレイヤーをブックマークできるプラグインです。デザイン作業中に重要なレイヤーを素早く見つけられるように開発しました。",
     "detail": "Figmaでの作業効率を向上させるためのプラグインです。大規模なデザインファイルでも、お気に入りのレイヤーを簡単にブックマークして、瞬時にアクセスできます。プラグインAPIを活用して、直感的なUIと高速な検索機能を実装しています。",
     "url": "https://www.figma.com/community/plugin/1018556921170761713/figmark",
-    "imageUrl": "/images/figmark.webp"
+    "imageUrl": "/projects/figmark.jpg"
+  },
+  {
+    "id": "2",
+    "title": "GLTF Light",
+    "labels": ["Web application"],
+    "description": "glbファイルを簡単に表示・軽量化できるWebサービスです。",
+    "detail": "glbをアップロードするとWebARでの使用向けにWarningやErrorを表示し、必要な場合は軽量化も行えます。簡単にglbファイルの表示確認も可能です。",
+    "url": "https://gltf.raihara3.xyz/",
+    "imageUrl": "/projects/gltf-light.webp"
+  },
+  {
+    "id": "3",
+    "title": "刷り直さないAR名刺",
+    "labels": ["WebAR", "Web application"],
+    "description": "名刺にスマホをかざすと情報が表示されるWebAR名刺です。",
+    "detail": "glbをアップロードするとWebARでの使用向けにWarningやErrorを表示し、必要な場合は軽量化も行えます。簡単にglbファイルの表示確認も可能です。",
+    "url": "https://www.youtube.com/watch?v=g915YBYsmCE",
+    "imageUrl": "/projects/business_card.jpg"
   }
 ]
