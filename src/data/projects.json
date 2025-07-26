@@ -106,5 +106,14 @@
     "detail": "同じバーチャル背景に合成することで、まるで同じ空間にいるような体験ができます。リビング、オフィス、カフェなど、様々な背景から選択できます。PC向けのウェブサービスです。",
     "url": "https://marude.raihara3.xyz/",
     "imageUrl": "/projects/marude.jpg"
+  },
+  {
+    "id": "12",
+    "title": "Quick Bookmark Search",
+    "labels": ["拡張機能"],
+    "description": "Sidekickにあった、ブックマーク検索機能をChrome拡張機能として実装しました。",
+    "detail": "Alt+Fでブックマーク検索ウィンドウが開き、キーワードを入力して検索できます。検索結果はブックマークのタイトルとURLを表示し、クリックするとそのページに移動します。Sidekickの便利な機能をChromeでも利用できるようにしました。",
+    "url": "https://github.com/raihara3/quick-bookmark-search/releases",
+    "imageUrl": "/projects/quick_bookmark_search.jpg"
   }
 ]
