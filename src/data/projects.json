@@ -115,5 +115,14 @@
     "detail": "Alt+Fでブックマーク検索ウィンドウが開き、キーワードを入力して検索できます。検索結果はブックマークのタイトルとURLを表示し、クリックするとそのページに移動します。Sidekickの便利な機能をChromeでも利用できるようにしました。",
     "url": "https://github.com/raihara3/quick-bookmark-search/releases",
     "imageUrl": "/projects/quick_bookmark_search.jpg"
+  },
+  {
+    "id": "13",
+    "title": "Feed Space",
+    "labels": ["Web application"],
+    "description": "RSSフィードを簡単に管理・閲覧できるWebアプリです。",
+    "detail": "任意のキーワードラベルを設定して、フィードを分類・整理できます。フィードの追加、削除、編集も簡単に行えます。",
+    "url": "https://feed-space.raihara3.xyz/",
+    "imageUrl": "/projects/feed-space.jpg"
   }
 ]
