@@ -14,11 +14,37 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "raihara3",
-  description: "raihara3's projects",
+  title: "ASOBI SPACE | raihara3",
+  description:
+    "raihara3のサイト。フロントエンド、WebXR、3Dなどの制作物を紹介しています。",
   icons: {
     icon: "/logo.png",
     apple: "/logo.png",
+  },
+  openGraph: {
+    title: "ASOBI SPACE | raihara3",
+    description:
+      "raihara3のサイト。フロントエンド、WebXR、3Dなどの制作物を紹介しています。",
+    url: "https://raihara3.com",
+    siteName: "ASOBI SPACE",
+    images: [
+      {
+        url: "/ogp.jpg",
+        width: 1200,
+        height: 630,
+        alt: "ASOBI SPACE | raihara3",
+      },
+    ],
+    locale: "ja_JP",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "ASOBI SPACE | raihara3",
+    description:
+      "raihara3のサイト。フロントエンド、WebXR、3Dなどの制作物を紹介しています。",
+    images: ["/ogp.jpg"],
+    creator: "@raihara3",
   },
 };
 
