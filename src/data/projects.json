@@ -2,7 +2,7 @@
   {
     "id": "0",
     "title": "WebARおえかきチャット",
-    "labels": ["WebAR", "Web application"],
+    "labels": ["WebAR"],
     "description": "音声通話をしながら現実空間上にお絵描きできるWebARアプリです。",
     "detail": "複数人で同時接続して、音声通話をしながら一緒に現実空間上にお絵描きができます。WebXRとWebRTCを活用して、リアルタイムでの共同作業を可能にしています。ブラウザ上で動作するため、特別なアプリのインストールは不要です。",
     "url": "https://github.com/raihara3/webar-oekaki-chat",
@@ -12,7 +12,7 @@
   {
     "id": "1",
     "title": "figmark",
-    "labels": ["Plugin"],
+    "labels": ["Extension"],
     "description": "Figmaで好きなレイヤーをブックマークできるプラグインです。デザイン作業中に重要なレイヤーを素早く見つけられるように開発しました。",
     "detail": "Figmaでの作業効率を向上させるためのプラグインです。大規模なデザインファイルでも、お気に入りのレイヤーを簡単にブックマークして、瞬時にアクセスできます。プラグインAPIを活用して、直感的なUIと高速な検索機能を実装しています。",
     "url": "https://www.figma.com/community/plugin/1018556921170761713/figmark",
@@ -22,7 +22,7 @@
   {
     "id": "2",
     "title": "GLTF Light",
-    "labels": ["Web application"],
+    "labels": ["Web service"],
     "description": "glbファイルを簡単に表示・軽量化できるWebサービスです。",
     "detail": "glbをアップロードするとWebARでの使用向けにWarningやErrorを表示し、必要な場合は軽量化も行えます。簡単にglbファイルの表示確認も可能です。",
     "url": "https://gltf.raihara3.xyz/",
@@ -112,7 +112,7 @@
   {
     "id": "11",
     "title": "MARUDE",
-    "labels": ["Web application"],
+    "labels": ["Web service"],
     "description": "1つのバーチャル背景に全員を合成することで、まるで同じ空間にいるような体験ができるビデオ通話サービスです。",
     "detail": "同じバーチャル背景に合成することで、まるで同じ空間にいるような体験ができます。リビング、オフィス、カフェなど、様々な背景から選択できます。PC向けのウェブサービスです。",
     "url": "https://marude.raihara3.xyz/",
@@ -122,7 +122,7 @@
   {
     "id": "12",
     "title": "Quick Bookmark Search",
-    "labels": ["拡張機能"],
+    "labels": ["Extension"],
     "description": "Sidekickにあった、ブックマーク検索機能をChrome拡張機能として実装しました。",
     "detail": "Alt+Fでブックマーク検索ウィンドウが開き、キーワードを入力して検索できます。検索結果はブックマークのタイトルとURLを表示し、クリックするとそのページに移動します。Sidekickの便利な機能をChromeでも利用できるようにしました。",
     "url": "https://github.com/raihara3/quick-bookmark-search/releases",
@@ -132,7 +132,7 @@
   {
     "id": "13",
     "title": "Feed Space",
-    "labels": ["Web application"],
+    "labels": ["Web service"],
     "description": "RSSフィードを簡単に管理・閲覧できるWebアプリです。",
     "detail": "任意のキーワードラベルを設定して、フィードを分類・整理できます。フィードの追加、削除、編集も簡単に行えます。",
     "url": "https://feed-space.raihara3.xyz/",
@@ -142,7 +142,7 @@
   {
     "id": "14",
     "title": "SplatViewer",
-    "labels": ["Web application"],
+    "labels": ["Web service"],
     "description": "Gaussian Splat形式の3DモデルをプレビューできるWebアプリです。",
     "detail": "Gaussian Splat形式の3Dモデルをアップロードして、ブラウザ上でリアルタイムにプレビューできます。モデルの回転、ズーム、パンなどの操作も可能です。",
     "url": "https://splat.raihara3.xyz/",
