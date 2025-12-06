@@ -6,7 +6,8 @@
     "description": "音声通話をしながら現実空間上にお絵描きできるWebARアプリです。",
     "detail": "複数人で同時接続して、音声通話をしながら一緒に現実空間上にお絵描きができます。WebXRとWebRTCを活用して、リアルタイムでの共同作業を可能にしています。ブラウザ上で動作するため、特別なアプリのインストールは不要です。",
     "url": "https://github.com/raihara3/webar-oekaki-chat",
-    "imageUrl": "/projects/webar_oekaki_chat.jpg"
+    "imageUrl": "/projects/webar_oekaki_chat.jpg",
+    "featured": true
   },
   {
     "id": "1",
@@ -15,7 +16,8 @@
     "description": "Figmaで好きなレイヤーをブックマークできるプラグインです。デザイン作業中に重要なレイヤーを素早く見つけられるように開発しました。",
     "detail": "Figmaでの作業効率を向上させるためのプラグインです。大規模なデザインファイルでも、お気に入りのレイヤーを簡単にブックマークして、瞬時にアクセスできます。プラグインAPIを活用して、直感的なUIと高速な検索機能を実装しています。",
     "url": "https://www.figma.com/community/plugin/1018556921170761713/figmark",
-    "imageUrl": "/projects/figmark.jpg"
+    "imageUrl": "/projects/figmark.jpg",
+    "featured": false
   },
   {
     "id": "2",
@@ -24,7 +26,8 @@
     "description": "glbファイルを簡単に表示・軽量化できるWebサービスです。",
     "detail": "glbをアップロードするとWebARでの使用向けにWarningやErrorを表示し、必要な場合は軽量化も行えます。簡単にglbファイルの表示確認も可能です。",
     "url": "https://gltf.raihara3.xyz/",
-    "imageUrl": "/projects/gltf-light.webp"
+    "imageUrl": "/projects/gltf-light.webp",
+    "featured": false
   },
   {
     "id": "3",
@@ -33,7 +36,8 @@
     "description": "Immersal VPSを活用した、東京タワーのAR表示アプリです。",
     "detail": "東京タワーにスマホを向けると、東京タワーの周辺にARの演出が表示されるWebARアプリです。ImmersalのVPS（Visual Positioning System）を活用して、正確な位置情報に基づいたAR体験を提供します。ブラウザ上で動作するため、特別なアプリのインストールは不要です。",
     "url": "https://www.youtube.com/shorts/55_p_heV_ps",
-    "imageUrl": "/projects/tokyo_tower_ar.png"
+    "imageUrl": "/projects/tokyo_tower_ar.png",
+    "featured": true
   },
   {
     "id": "4",
@@ -42,7 +46,8 @@
     "description": "名刺にスマホをかざすと情報が表示されるWebAR名刺です。",
     "detail": "glbをアップロードするとWebARでの使用向けにWarningやErrorを表示し、必要な場合は軽量化も行えます。簡単にglbファイルの表示確認も可能です。",
     "url": "https://www.youtube.com/watch?v=g915YBYsmCE",
-    "imageUrl": "/projects/business_card.jpg"
+    "imageUrl": "/projects/business_card.jpg",
+    "featured": false
   },
   {
     "id": "5",
@@ -51,7 +56,8 @@
     "description": "年賀状にスマホをかざすとARが飛び出すWebAR年賀状です。",
     "detail": "年賀状からARが飛び出し、おみくじも楽しむことができます。",
     "url": "https://x.com/raihara3/status/1741479626336305215/video/1",
-    "imageUrl": "/projects/post_card.jpg"
+    "imageUrl": "/projects/post_card.jpg",
+    "featured": false
   },
   {
     "id": "6",
@@ -60,7 +66,8 @@
     "description": "ARのシューティングゲームです。投石器を使って、時間以内に的を倒します。",
     "detail": "ARのシューティングゲームで、投石器を使って的を倒すゲームです。時間内にできるだけ多くの的を倒すことが目標です。WebXRを活用して、ブラウザ上で手軽に楽しめます。",
     "url": "https://www.youtube.com/watch?v=RVQojbkXMpI",
-    "imageUrl": "/projects/shoot.jpg"
+    "imageUrl": "/projects/shoot.jpg",
+    "featured": false
   },
   {
     "id": "7",
@@ -69,7 +76,8 @@
     "description": "現実空間に笹を飾り、短冊に願い事を書いてARで楽しむWebARアプリです。",
     "detail": "WebARで笹を表示すると他の人の願い事も見えるようになっています。短冊に願い事を書いて、ARで笹に飾ることができます。七夕の雰囲気を楽しむことができるWebアプリです。",
     "url": "https://x.com/raihara3/status/1808854356206497962",
-    "imageUrl": "/projects/tanabata.jpg"
+    "imageUrl": "/projects/tanabata.jpg",
+    "featured": true
   },
   {
     "id": "8",
@@ -78,7 +86,8 @@
     "description": "VPSを活用したARかくれんぼゲームです。現実空間に隠れた「LOVEちゃん」を探し出すゲームです。",
     "detail": "VPS（Visual Positioning System）を活用して、現実空間に隠れた「LOVEちゃん」を探し出すARゲームです。指定されたエリア内で「LOVEちゃん」を見つけると、特別なメッセージが表示されます。ブラウザ上で動作するため、特別なアプリのインストールは不要です。",
     "url": "https://x.com/raihara3/status/1809513420775125175",
-    "imageUrl": "/projects/find_love.jpg"
+    "imageUrl": "/projects/find_love.jpg",
+    "featured": false
   },
   {
     "id": "9",
@@ -87,7 +96,8 @@
     "description": "VPSを活用した、現実空間に屋台を出現させて閲覧・ショッピングができるWebARアプリです。",
     "detail": "VPS（Visual Positioning System）を活用して、現実空間にあちこちに屋台が出現し、閲覧やショッピングができるWebARアプリです。屋台の中には様々な商品が並んでおり、実際に購入することも可能です。ブラウザ上で動作するため、特別なアプリのインストールは不要です。",
     "url": "https://www.youtube.com/watch?v=664c7fzULKY",
-    "imageUrl": "/projects/ar_yatai.jpg"
+    "imageUrl": "/projects/ar_yatai.jpg",
+    "featured": false
   },
   {
     "id": "10",
@@ -96,7 +106,8 @@
     "description": "お正月にARでも参拝して楽しめるWebARアプリです。",
     "detail": "おみくじを引いたり、絵馬を書いたり、屋台で買い物をしたり。お正月の雰囲気をARで楽しむことができます。",
     "url": "https://x.com/raihara3/status/1874117826828788102",
-    "imageUrl": "/projects/sanpai_ar.jpg"
+    "imageUrl": "/projects/sanpai_ar.jpg",
+    "featured": false
   },
   {
     "id": "11",
@@ -105,7 +116,8 @@
     "description": "1つのバーチャル背景に全員を合成することで、まるで同じ空間にいるような体験ができるビデオ通話サービスです。",
     "detail": "同じバーチャル背景に合成することで、まるで同じ空間にいるような体験ができます。リビング、オフィス、カフェなど、様々な背景から選択できます。PC向けのウェブサービスです。",
     "url": "https://marude.raihara3.xyz/",
-    "imageUrl": "/projects/marude.jpg"
+    "imageUrl": "/projects/marude.jpg",
+    "featured": false
   },
   {
     "id": "12",
@@ -114,7 +126,8 @@
     "description": "Sidekickにあった、ブックマーク検索機能をChrome拡張機能として実装しました。",
     "detail": "Alt+Fでブックマーク検索ウィンドウが開き、キーワードを入力して検索できます。検索結果はブックマークのタイトルとURLを表示し、クリックするとそのページに移動します。Sidekickの便利な機能をChromeでも利用できるようにしました。",
     "url": "https://github.com/raihara3/quick-bookmark-search/releases",
-    "imageUrl": "/projects/quick_bookmark_search.jpg"
+    "imageUrl": "/projects/quick_bookmark_search.jpg",
+    "featured": false
   },
   {
     "id": "13",
@@ -123,6 +136,17 @@
     "description": "RSSフィードを簡単に管理・閲覧できるWebアプリです。",
     "detail": "任意のキーワードラベルを設定して、フィードを分類・整理できます。フィードの追加、削除、編集も簡単に行えます。",
     "url": "https://feed-space.raihara3.xyz/",
-    "imageUrl": "/projects/feed-space.jpg"
+    "imageUrl": "/projects/feed-space.jpg",
+    "featured": false
+  },
+  {
+    "id": "14",
+    "title": "SplatViewer",
+    "labels": ["Web application"],
+    "description": "Gaussian Splat形式の3DモデルをプレビューできるWebアプリです。",
+    "detail": "Gaussian Splat形式の3Dモデルをアップロードして、ブラウザ上でリアルタイムにプレビューできます。モデルの回転、ズーム、パンなどの操作も可能です。",
+    "url": "https://splat.raihara3.xyz/",
+    "imageUrl": "/projects/splat-viewer.jpg",
+    "featured": true
   }
 ]

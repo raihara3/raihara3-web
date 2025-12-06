@@ -1,22 +1,32 @@
 "use client";
 
 import { useState } from "react";
+import { motion } from "motion/react";
+import { Menu, X } from "lucide-react";
 import Image from "next/image";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const handleMenuToggle = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+  const navItems = [
+    { label: "Projects", href: "#projects" },
+    { label: "Profile", href: "#profile" },
+    { label: "Contact", href: "#contact" },
+  ];
 
-  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
-    e.preventDefault();
+  const handleLinkClick = (
+    event: React.MouseEvent<HTMLAnchorElement>,
+    targetId: string
+  ) => {
+    event.preventDefault();
     const targetElement = document.getElementById(targetId);
     if (targetElement) {
       const yOffset = -80;
-      const y = targetElement.getBoundingClientRect().top + window.pageYOffset + yOffset;
-      
+      const y =
+        targetElement.getBoundingClientRect().top +
+        window.pageYOffset +
+        yOffset;
+
       const startPosition = window.pageYOffset;
       const distance = y - startPosition;
       const duration = 500;
@@ -26,89 +36,94 @@ export default function Header() {
         if (start === null) start = currentTime;
         const timeElapsed = currentTime - start;
         const progress = Math.min(timeElapsed / duration, 1);
-        
-        const easing = (t: number) => t < 0.5 
-          ? 4 * t * t * t 
-          : 1 - Math.pow(-2 * t + 2, 3) / 2;
-        
+
+        const easing = (t: number) =>
+          t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+
         window.scrollTo(0, startPosition + distance * easing(progress));
-        
+
         if (progress < 1) {
           requestAnimationFrame(animation);
         }
       };
-      
+
       requestAnimationFrame(animation);
     }
     setIsMenuOpen(false);
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-gray-900 bg-opacity-80 backdrop-blur-sm py-4 px-6">
-      <nav className="max-w-6xl mx-auto flex justify-between items-center">
-        <div className="flex items-center gap-2">
-          <Image 
-            src="/logo.png" 
-            alt="raihara3 logo" 
-            width={32} 
-            height={32} 
-            className="w-8 h-8"
-          />
-          <h1 className="text-2xl font-bold text-white">raihara3</h1>
-        </div>
-        
-        <button
-          className="md:hidden text-white"
-          onClick={handleMenuToggle}
-          aria-label="Menu"
-        >
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
+    <motion.nav
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      className="fixed top-0 left-0 right-0 z-50 px-6 py-4"
+    >
+      <div className="max-w-6xl mx-auto">
+        <div className="flex items-center justify-between p-4 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 flex items-center justify-center overflow-hidden">
+              <Image
+                src="/logo.png"
+                alt="raihara3 logo"
+                width={40}
+                height={40}
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <span className="text-white font-semibold">raihara3</span>
+          </div>
+
+          <div className="hidden md:flex items-center gap-8">
+            {navItems.map((item, index) => (
+              <a
+                key={index}
+                href={item.href}
+                onClick={(event) => handleLinkClick(event, item.href.slice(1))}
+                className="text-slate-300 hover:text-white transition-colors relative group"
+              >
+                {item.label}
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-500 to-cyan-500 group-hover:w-full transition-all duration-300" />
+              </a>
+            ))}
+          </div>
+
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="md:hidden p-2 rounded-lg bg-white/10 hover:bg-white/20 transition-colors"
           >
             {isMenuOpen ? (
-              <path d="M6 18L18 6M6 6l12 12" />
+              <X className="w-6 h-6 text-white" />
             ) : (
-              <path d="M4 6h16M4 12h16M4 18h16" />
+              <Menu className="w-6 h-6 text-white" />
             )}
-          </svg>
-        </button>
+          </button>
+        </div>
 
-        <ul className={`md:flex md:space-x-8 ${isMenuOpen ? 'block' : 'hidden'} absolute md:static top-16 left-0 w-full md:w-auto bg-gray-900 bg-opacity-95 md:bg-transparent p-4 md:p-0`}>
-          <li>
-            <a
-              href="#projects"
-              onClick={(e) => handleLinkClick(e, 'projects')}
-              className="block py-2 md:py-0 text-gray-300 hover:text-white transition-colors"
-            >
-              Projects
-            </a>
-          </li>
-          <li>
-            <a
-              href="#about"
-              onClick={(e) => handleLinkClick(e, 'about')}
-              className="block py-2 md:py-0 text-gray-300 hover:text-white transition-colors"
-            >
-              About
-            </a>
-          </li>
-          <li>
-            <a
-              href="#contact"
-              onClick={(e) => handleLinkClick(e, 'contact')}
-              className="block py-2 md:py-0 text-gray-300 hover:text-white transition-colors"
-            >
-              Contact
-            </a>
-          </li>
-        </ul>
-      </nav>
-    </header>
+        {isMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="md:hidden mt-4 p-6 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10"
+          >
+            <div className="flex flex-col gap-4">
+              {navItems.map((item, index) => (
+                <a
+                  key={index}
+                  href={item.href}
+                  onClick={(event) =>
+                    handleLinkClick(event, item.href.slice(1))
+                  }
+                  className="text-slate-300 hover:text-white transition-colors py-2"
+                >
+                  {item.label}
+                </a>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </div>
+    </motion.nav>
   );
 }
