@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
-import { Rocket, Star } from "lucide-react";
+import { Star } from "lucide-react";
 
 export default function Hero() {
   return (

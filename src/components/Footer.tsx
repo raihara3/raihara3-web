@@ -1,8 +1,3 @@
-"use client";
-
-import { motion } from "motion/react";
-import { Sparkles, Rocket } from "lucide-react";
-
 export default function Footer() {
   return (
     <footer className="relative py-12 overflow-hidden">
