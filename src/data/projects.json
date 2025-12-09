@@ -148,5 +148,15 @@
     "url": "https://splat.raihara3.xyz/",
     "imageUrl": "/projects/splat-viewer.jpg",
     "featured": true
+  },
+  {
+    "id": "15",
+    "title": "Don't Forget Schedule",
+    "labels": ["Extension"],
+    "description": "絶対に予定を忘れたくない人のためのChrome拡張機能です。",
+    "detail": "予定の時間に近づいたら通知音とともに最前面に大きく通知を表示し、更に1分前にも再度通知を行います。これにより、重要な予定を確実に忘れないようにサポートします。",
+    "url": "https://github.com/raihara3/dont-forget-schedule",
+    "imageUrl": "/projects/dont-forget-schedule.jpg",
+    "featured": false
   }
 ]
