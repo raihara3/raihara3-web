@@ -1,11 +1,35 @@
 "use client";
 
-import { motion } from "motion/react";
+import { useRef, useMemo } from "react";
+import { motion, useInView } from "motion/react";
 import { Star } from "lucide-react";
 
+const STAR_COUNT = 12;
+
+function generateStarPositions(count: number) {
+  const positions: Array<{ top: string; left: string; duration: number; delay: number }> = [];
+  for (let i = 0; i < count; i++) {
+    const seed = i * 137.508;
+    positions.push({
+      top: `${(seed * 7) % 100}%`,
+      left: `${(seed * 13) % 100}%`,
+      duration: 2 + (i % 3),
+      delay: (i * 0.3) % 2,
+    });
+  }
+  return positions;
+}
+
 export default function Hero() {
+  const sectionReference = useRef<HTMLElement>(null);
+  const isInView = useInView(sectionReference, { amount: 0.1 });
+  const starPositions = useMemo(() => generateStarPositions(STAR_COUNT), []);
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section
+      ref={sectionReference}
+      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+    >
       <div className="absolute inset-0 bg-gradient-to-b from-indigo-950 via-purple-950 to-slate-950" />
       <div className="absolute inset-0 star-pattern opacity-60" />
 
@@ -16,11 +40,9 @@ export default function Hero() {
             "radial-gradient(circle at 30% 30%, #f59e0b, #ef4444, #7c2d12)",
           boxShadow:
             "0 0 100px rgba(245, 158, 11, 0.5), inset -30px -30px 60px rgba(0,0,0,0.3)",
+          willChange: isInView ? "transform" : "auto",
         }}
-        animate={{
-          rotate: 360,
-          y: [0, 30, 0],
-        }}
+        animate={isInView ? { rotate: 360, y: [0, 30, 0] } : {}}
         transition={{
           rotate: { duration: 60, repeat: Infinity, ease: "linear" },
           y: { duration: 8, repeat: Infinity, ease: "easeInOut" },
@@ -38,11 +60,9 @@ export default function Hero() {
             "radial-gradient(circle at 40% 40%, #06b6d4, #3b82f6, #1e3a8a)",
           boxShadow:
             "0 0 80px rgba(6, 182, 212, 0.4), inset -20px -20px 40px rgba(0,0,0,0.3)",
+          willChange: isInView ? "transform" : "auto",
         }}
-        animate={{
-          rotate: -360,
-          x: [0, 20, 0],
-        }}
+        animate={isInView ? { rotate: -360, x: [0, 20, 0] } : {}}
         transition={{
           rotate: { duration: 50, repeat: Infinity, ease: "linear" },
           x: { duration: 7, repeat: Infinity, ease: "easeInOut" },
@@ -58,12 +78,9 @@ export default function Hero() {
           background:
             "radial-gradient(circle at 35% 35%, #a855f7, #7e22ce, #4c1d95)",
           boxShadow: "0 0 40px rgba(168, 85, 247, 0.6)",
+          willChange: isInView ? "transform" : "auto",
         }}
-        animate={{
-          y: [0, -30, 0],
-          x: [0, 20, 0],
-          rotate: 360,
-        }}
+        animate={isInView ? { y: [0, -30, 0], x: [0, 20, 0], rotate: 360 } : {}}
         transition={{
           duration: 10,
           repeat: Infinity,
@@ -77,12 +94,9 @@ export default function Hero() {
           background:
             "radial-gradient(circle at 30% 30%, #fbbf24, #f59e0b, #b45309)",
           boxShadow: "0 0 50px rgba(251, 191, 36, 0.5)",
+          willChange: isInView ? "transform" : "auto",
         }}
-        animate={{
-          y: [0, 40, 0],
-          x: [0, -25, 0],
-          rotate: -360,
-        }}
+        animate={isInView ? { y: [0, 40, 0], x: [0, -25, 0], rotate: -360 } : {}}
         transition={{
           duration: 12,
           repeat: Infinity,
@@ -90,65 +104,61 @@ export default function Hero() {
         }}
       />
 
-      {[...Array(3)].map((_, index) => (
-        <motion.div
-          key={index}
-          className="absolute"
-          style={{
-            top: `${-5 + index * 10}%`,
-            right: `${-5 + index * 15}%`,
-          }}
-          animate={{
-            x: ["0vw", "-120vw"],
-            y: ["0vh", "120vh"],
-            opacity: [0, 1, 1, 0],
-          }}
-          transition={{
-            duration: 1.5,
-            delay: index * 3,
-            repeat: Infinity,
-            repeatDelay: 6,
-            ease: "easeOut",
-          }}
-        >
-          <div className="flex items-center rotate-[135deg]">
-            <div className="w-32 h-0.5 bg-gradient-to-l from-white to-transparent -mr-1" />
-            <div
-              className="w-2 h-2 bg-white rounded-full"
-              style={{ boxShadow: "0 0 10px 4px rgba(255, 255, 255, 0.8)" }}
-            />
-          </div>
-        </motion.div>
-      ))}
+      {isInView &&
+        [...Array(3)].map((_, index) => (
+          <motion.div
+            key={index}
+            className="absolute"
+            style={{
+              top: `${-5 + index * 10}%`,
+              right: `${-5 + index * 15}%`,
+              willChange: "transform, opacity",
+            }}
+            animate={{
+              x: ["0vw", "-120vw"],
+              y: ["0vh", "120vh"],
+              opacity: [0, 1, 1, 0],
+            }}
+            transition={{
+              duration: 1.5,
+              delay: index * 3,
+              repeat: Infinity,
+              repeatDelay: 6,
+              ease: "easeOut",
+            }}
+          >
+            <div className="flex items-center rotate-[135deg]">
+              <div className="w-32 h-0.5 bg-gradient-to-l from-white to-transparent -mr-1" />
+              <div
+                className="w-2 h-2 bg-white rounded-full"
+                style={{ boxShadow: "0 0 10px 4px rgba(255, 255, 255, 0.8)" }}
+              />
+            </div>
+          </motion.div>
+        ))}
 
-      {[...Array(20)].map((_, index) => (
-        <motion.div
+      {starPositions.map((star, index) => (
+        <div
           key={`star-${index}`}
           className="absolute w-2 h-2"
           style={{
-            top: `${Math.random() * 100}%`,
-            left: `${Math.random() * 100}%`,
+            top: star.top,
+            left: star.left,
           }}
         >
-          <Star
-            className="w-full h-full text-yellow-200 fill-yellow-200"
-            style={{ filter: "drop-shadow(0 0 4px rgba(254, 240, 138, 0.8))" }}
-          />
-          <motion.div
-            animate={{
-              opacity: [0.3, 1, 0.3],
-              scale: [0.8, 1.2, 0.8],
+          <div
+            className={isInView ? "star-twinkle" : ""}
+            style={{
+              ["--twinkle-duration" as string]: `${star.duration}s`,
+              ["--twinkle-delay" as string]: `${star.delay}s`,
             }}
-            transition={{
-              duration: 2 + Math.random() * 2,
-              repeat: Infinity,
-              delay: Math.random() * 2,
-            }}
-            className="absolute inset-0"
           >
-            <Star className="w-full h-full text-yellow-200 fill-yellow-200" />
-          </motion.div>
-        </motion.div>
+            <Star
+              className="w-full h-full text-yellow-200 fill-yellow-200"
+              style={{ filter: "drop-shadow(0 0 4px rgba(254, 240, 138, 0.8))" }}
+            />
+          </div>
+        </div>
       ))}
 
       <div className="relative z-10 container mx-auto px-6 text-center">

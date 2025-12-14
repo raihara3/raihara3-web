@@ -1,7 +1,8 @@
 "use client";
 
+import { useRef } from "react";
 import Image from "next/image";
-import { motion } from "motion/react";
+import { motion, useInView } from "motion/react";
 import { ExternalLink } from "lucide-react";
 
 export interface Project {
@@ -38,6 +39,9 @@ export default function ProjectCard({
   index,
   size = "normal",
 }: ProjectCardProps) {
+  const cardReference = useRef<HTMLDivElement>(null);
+  const isInView = useInView(cardReference, { amount: 0.1 });
+
   const colorIndex = index % planetColors.length;
   const planetColor = planetColors[colorIndex];
   const randomRotation = ((index * 17) % 25) - 12;
@@ -51,6 +55,7 @@ export default function ProjectCard({
 
   return (
     <motion.div
+      ref={cardReference}
       initial={{ opacity: 0, scale: 0.8 }}
       whileInView={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
@@ -62,9 +67,7 @@ export default function ProjectCard({
       }}
     >
       <motion.div
-        animate={{
-          y: [0, -10, 0],
-        }}
+        animate={isInView ? { y: [0, -10, 0] } : {}}
         transition={{
           duration: 4 + randomDelay,
           repeat: Infinity,
@@ -72,6 +75,7 @@ export default function ProjectCard({
           delay: randomDelay,
         }}
         className="relative"
+        style={{ willChange: isInView ? "transform" : "auto" }}
       >
         <div className="relative w-full aspect-square">
           <div
