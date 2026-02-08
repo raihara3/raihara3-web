@@ -1,20 +1,23 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Saira, Noto_Sans_JP } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const saira = Saira({
+  variable: "--font-saira",
   subsets: ["latin"],
+  weight: ["400", "600"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const notoSansJP = Noto_Sans_JP({
+  variable: "--font-noto-sans-jp",
   subsets: ["latin"],
+  weight: ["400", "700"],
 });
 
 export const metadata: Metadata = {
-  title: "ASOBI SPACE | raihara3",
+  metadataBase: new URL("https://raihara3.xyz"),
+  title: "raihara3's Launch Station",
   description:
     "raihara3のサイト。フロントエンド、WebXR、3Dなどの制作物を紹介しています。",
   icons: {
@@ -22,17 +25,17 @@ export const metadata: Metadata = {
     apple: "/logo.png",
   },
   openGraph: {
-    title: "ASOBI SPACE | raihara3",
+    title: "raihara3's Launch Station",
     description:
       "raihara3のサイト。フロントエンド、WebXR、3Dなどの制作物を紹介しています。",
-    url: "https://raihara3.com",
-    siteName: "ASOBI SPACE",
+    url: "https://raihara3.xyz",
+    siteName: "raihara3's Launch Station",
     images: [
       {
         url: "/ogp.jpg",
         width: 1200,
         height: 630,
-        alt: "ASOBI SPACE | raihara3",
+        alt: "raihara3's Launch Station",
       },
     ],
     locale: "ja_JP",
@@ -40,7 +43,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "ASOBI SPACE | raihara3",
+    title: "raihara3's Launch Station",
     description:
       "raihara3のサイト。フロントエンド、WebXR、3Dなどの制作物を紹介しています。",
     images: ["/ogp.jpg"],
@@ -54,9 +57,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="ja">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${saira.variable} ${notoSansJP.variable} antialiased`}
       >
         {children}
         <Analytics />
