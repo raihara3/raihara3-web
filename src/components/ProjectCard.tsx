@@ -15,20 +15,28 @@ export interface Project {
 
 interface ProjectCardProps {
   project: Project;
-  index: number;
   onCardClick: (project: Project) => void;
 }
 
-function FileTab({ label }: { label: string }) {
+function FileTab({
+  label,
+  isFeatured,
+}: {
+  label: string;
+  isFeatured: boolean;
+}) {
   return (
     <div className="relative w-[100px] h-[26px] md:w-[115px] md:h-[30px] shrink-0">
       <svg
         className="absolute inset-0 w-full h-full"
         viewBox="0 0 115 30"
-        fill="#ffffff"
+        fill={isFeatured ? "#FF4800" : "#ffffff"}
         preserveAspectRatio="none"
       >
-        <path d="M3 0H112L115 30H0L3 0Z" fill="#ffffff" />
+        <path
+          d="M3 0H112L115 30H0L3 0Z"
+          fill={isFeatured ? "#FF4800" : "#ffffff"}
+        />
       </svg>
       <span className="absolute inset-0 flex items-center justify-center font-[family-name:var(--font-saira)] font-semibold text-sm md:text-[20px] text-[var(--black)]">
         {label}
@@ -39,10 +47,9 @@ function FileTab({ label }: { label: string }) {
 
 export default function ProjectCard({
   project,
-  index,
   onCardClick,
 }: ProjectCardProps) {
-  const projectNumber = String(index + 1).padStart(3, "0");
+  const projectNumber = String(Number(project.id) + 1).padStart(3, "0");
 
   return (
     <div
@@ -57,7 +64,7 @@ export default function ProjectCard({
         }
       }}
     >
-      <FileTab label={`PLN-${projectNumber}`} />
+      <FileTab label={`PLN-${projectNumber}`} isFeatured={project.featured} />
 
       <div className="bg-white flex flex-col gap-[10px] items-start px-2 py-[9px] w-full">
         <div className="relative bg-[var(--gray)] w-full aspect-[333/215]">

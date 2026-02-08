@@ -70,7 +70,7 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
 
           <div className="flex flex-wrap gap-[17px] items-start w-full">
             <AnimatePresence mode="popLayout">
-              {filteredProjects.map((project, index) => (
+              {filteredProjects.map((project) => (
                 <motion.div
                   key={project.id}
                   layout
@@ -82,7 +82,6 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
                 >
                   <ProjectCard
                     project={project}
-                    index={index}
                     onCardClick={setSelectedProject}
                   />
                 </motion.div>

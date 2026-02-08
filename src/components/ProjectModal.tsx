@@ -109,18 +109,20 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
               </div>
 
               <div className="flex gap-4">
-                <a
-                  href={project.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-6 py-3 bg-[var(--black)] text-white font-[family-name:var(--font-saira)] font-semibold flex items-center gap-2 hover:opacity-90 transition-opacity"
-                >
-                  <ExternalLink className="w-4 h-4" />
-                  プロジェクトを見る
-                </a>
+                {project.url && (
+                  <a
+                    href={project.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-6 py-3 bg-[var(--black)] text-white font-[family-name:var(--font-saira)] font-semibold flex items-center gap-2 hover:opacity-90 transition-opacity"
+                  >
+                    <ExternalLink className="w-4 h-4" />
+                    外部リンク
+                  </a>
+                )}
                 <button
                   onClick={onClose}
-                  className="px-6 py-3 bg-[var(--gray)] text-[var(--black)] font-[family-name:var(--font-saira)] hover:opacity-80 transition-opacity"
+                  className="px-6 py-3 bg-[var(--gray)] text-[var(--black)] font-[family-name:var(--font-saira)] hover:opacity-80 transition-opacity cursor-pointer"
                 >
                   閉じる
                 </button>
