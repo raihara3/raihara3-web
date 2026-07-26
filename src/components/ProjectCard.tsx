@@ -1,17 +1,9 @@
 "use client";
 
 import Image from "next/image";
+import type { Project } from "@/lib/types";
 
-export interface Project {
-  id: string;
-  title: string;
-  labels: string[];
-  description: string;
-  detail: string;
-  url: string;
-  imageUrl: string;
-  featured: boolean;
-}
+export type { Project };
 
 interface ProjectCardProps {
   project: Project;
@@ -49,7 +41,7 @@ export default function ProjectCard({
   project,
   onCardClick,
 }: ProjectCardProps) {
-  const projectNumber = String(Number(project.id) + 1).padStart(3, "0");
+  const projectNumber = String(project.number).padStart(3, "0");
 
   return (
     <div
@@ -68,13 +60,15 @@ export default function ProjectCard({
 
       <div className="bg-white flex flex-col gap-[10px] items-start px-2 py-[9px] w-full">
         <div className="relative bg-[var(--gray)] w-full aspect-[333/215]">
-          <Image
-            src={project.imageUrl}
-            alt={project.title}
-            fill
-            className="object-cover"
-            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 350px"
-          />
+          {project.imageUrl && (
+            <Image
+              src={project.imageUrl}
+              alt={project.title}
+              fill
+              className="object-cover"
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 350px"
+            />
+          )}
         </div>
 
         <div className="flex flex-col items-start text-sm text-[var(--black)] w-full">

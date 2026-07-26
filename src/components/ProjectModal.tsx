@@ -63,14 +63,16 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
               <X className="w-6 h-6 text-[var(--black)]" />
             </button>
 
-            <div className="relative w-full aspect-video">
-              <Image
-                src={project.imageUrl}
-                alt={project.title}
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 896px"
-              />
+            <div className="relative w-full aspect-video bg-[var(--gray)]">
+              {project.imageUrl && (
+                <Image
+                  src={project.imageUrl}
+                  alt={project.title}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 896px"
+                />
+              )}
             </div>
 
             <div className="p-6 md:p-8">
