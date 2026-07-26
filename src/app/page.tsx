@@ -1,23 +1,26 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
+import SkillsSection from "@/components/SkillsSection";
 import ProjectsSection from "@/components/ProjectsSection";
-import AboutSection from "@/components/AboutSection";
+import ContactSection from "@/components/ContactSection";
+import Footer from "@/components/Footer";
 import { getProjects } from "@/lib/microcms";
 
 export default async function Home() {
   const projects = await getProjects();
 
   return (
-    <div className="min-h-screen bg-[var(--gray)]">
-      <div className="relative">
-        <Header />
-        <Hero />
-      </div>
+    <div className="min-h-screen bg-bg">
+      <Header />
+      <Hero />
 
-      <main className="flex flex-col gap-[45px] pt-[30px] pb-[80px]">
+      <main>
         <ProjectsSection projects={projects} />
-        <AboutSection />
+        <SkillsSection />
+        <ContactSection />
       </main>
+
+      <Footer />
     </div>
   );
 }

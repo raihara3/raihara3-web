@@ -39,6 +39,16 @@ interface MicroCMSListResponse<T> {
   limit: number;
 }
 
+/**
+ * Only allow http(s) links to reach the UI's `href`. CMS-authored URLs are
+ * trusted-ish (the author is the site owner), but rejecting other schemes such
+ * as `javascript:` is a cheap defense against a stored-XSS style mistake.
+ */
+function sanitizeUrl(url: string | undefined): string {
+  if (!url) return "";
+  return /^https?:\/\//i.test(url) ? url : "";
+}
+
 async function fetchProjects(): Promise<MicroCMSProject[]> {
   if (!SERVICE_DOMAIN || !API_KEY) {
     throw new Error(
@@ -90,9 +100,13 @@ export async function getProjects(): Promise<Project[]> {
         labels: content.labels ?? [],
         description: content.description ?? "",
         detail: content.detail ?? "",
-        url: content.url ?? "",
+        url: sanitizeUrl(content.url),
         imageUrl: content.thumbnail?.url ?? content.images?.[0]?.url ?? "",
         featured: content.featured ?? false,
+        // Take the date part only and use dots, e.g. "2026-02-05..." -> "2026.02.05".
+        date: content.publication_date
+          ? content.publication_date.slice(0, 10).replace(/-/g, ".")
+          : "",
       }))
   );
 }
