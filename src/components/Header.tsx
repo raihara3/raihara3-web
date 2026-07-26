@@ -1,18 +1,63 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import Image from "next/image";
+
+const navItems = [
+  { label: "Products", href: "#products" },
+  { label: "Skills", href: "#skills" },
+  { label: "Contact", href: "#contact" },
+];
+
 export default function Header() {
+  // Transparent over the dark hero, then a solid bar once scrolled past it.
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    // Only touch state when crossing the threshold; the updater form lets React
+    // bail out of re-renders when the value is unchanged.
+    const handleScroll = () => {
+      const isScrolled = window.scrollY > 80;
+      setScrolled((previous) => (previous === isScrolled ? previous : isScrolled));
+    };
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <header className="fixed top-0 right-0 z-50">
-      <div className="relative w-[200px] h-[40px] md:w-[345px] md:h-[65px]">
-        <svg
-          className="absolute inset-0 w-full h-full"
-          viewBox="0 0 276 65"
-          fill="none"
-          preserveAspectRatio="none"
-        >
-          <path d="M0 0H276V66H30.8L0 34.3562V0Z" fill="#FF4800" />
-        </svg>
-        <span className="absolute top-1/2 right-6 -translate-y-1/2 font-[family-name:var(--font-saira)] font-semibold text-base md:text-[30px] text-[var(--black)] whitespace-nowrap">
-          raihara3.xyz
-        </span>
+    <header
+      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
+        scrolled
+          ? "border-b border-line bg-bg/80 backdrop-blur-md"
+          : "border-b border-transparent bg-transparent"
+      }`}
+    >
+      <div className="mx-auto flex max-w-[1200px] items-center justify-between px-5 py-4 md:px-8">
+        <a href="#top" aria-label="raihara3" className="flex items-center">
+          <Image
+            src="/logo.png"
+            alt="raihara3"
+            width={36}
+            height={36}
+            className="h-9 w-9 object-contain"
+            priority
+          />
+        </a>
+
+        <nav className="flex items-center gap-5 md:gap-7">
+          {navItems.map((item) => (
+            <a
+              key={item.href}
+              href={item.href}
+              className={`font-[family-name:var(--font-saira)] text-sm font-medium transition-colors duration-200 hover:text-orange ${
+                scrolled ? "text-ink-sub" : "text-white/80"
+              }`}
+            >
+              {item.label}
+            </a>
+          ))}
+        </nav>
       </div>
     </header>
   );

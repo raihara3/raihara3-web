@@ -1,23 +1,31 @@
 @import "tailwindcss";
 
 :root {
-  --gray: #ebebeb;
-  --black: #0f0f0f;
-  --white: #ffffff;
+  --bg: #fafaf8;
+  --surface: #ffffff;
+  --ink: #171717;
+  --ink-sub: #686868;
+  --line: #e8e7e3;
+  --hero-bg: #0c0e12;
   --orange: #ff4800;
 }
 
 @theme inline {
-  --color-background: #ebebeb;
-  --color-foreground: #0f0f0f;
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-ink-sub: var(--ink-sub);
+  --color-line: var(--line);
+  --color-hero: var(--hero-bg);
+  --color-orange: var(--orange);
   --font-saira: var(--font-saira);
   --font-noto: var(--font-noto-sans-jp);
 }
 
 body {
-  background: #ebebeb;
-  color: #0f0f0f;
-  font-family: var(--font-saira), var(--font-noto-sans-jp), sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-noto-sans-jp), var(--font-saira), sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -29,19 +37,21 @@ body {
   overflow: hidden;
 }
 
-.floating {
-  animation:
-    float-translate 7s ease-in-out infinite,
-    float-rotate 9s ease-in-out infinite;
+/* Hero starfield: a single element whose box-shadow paints many 1px stars.
+   Coordinates are hard-coded (see Starfield.tsx) to avoid random values and
+   hydration mismatches. Twinkle is subtle and disabled for reduced motion. */
+.star-twinkle {
+  will-change: opacity;
+  animation: star-twinkle 6s ease-in-out infinite;
 }
 
-@keyframes float-translate {
-  0%, 100% { translate: 0 0; }
-  50% { translate: 4px -12px; }
+@keyframes star-twinkle {
+  0%, 100% { opacity: 0.25; }
+  50% { opacity: 0.5; }
 }
 
-@keyframes float-rotate {
-  0%, 100% { rotate: 0deg; }
-  50% { rotate: 1.5deg; }
+@media (prefers-reduced-motion: reduce) {
+  .star-twinkle {
+    animation: none;
+  }
 }
-

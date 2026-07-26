@@ -21,11 +21,15 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
 
     if (project) {
       document.addEventListener("keydown", handleKeyDown);
-    }
+      // Lock body scroll while the drawer is open.
+      const previousOverflow = document.body.style.overflow;
+      document.body.style.overflow = "hidden";
 
-    return () => {
-      document.removeEventListener("keydown", handleKeyDown);
-    };
+      return () => {
+        document.removeEventListener("keydown", handleKeyDown);
+        document.body.style.overflow = previousOverflow;
+      };
+    }
   }, [project, onClose]);
 
   const handleBackdropClick = (event: React.MouseEvent<HTMLDivElement>) => {
@@ -42,95 +46,93 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 z-50"
+          className="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm"
           onClick={handleBackdropClick}
           role="dialog"
           aria-modal="true"
           aria-label={project.title}
         >
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            transition={{ duration: 0.3 }}
-            className="bg-white max-w-4xl w-full max-h-[90vh] overflow-y-auto relative shadow-[2px_2px_5px_0px_rgba(0,0,0,0.2)]"
+          <motion.aside
+            initial={{ x: "100%" }}
+            animate={{ x: 0 }}
+            exit={{ x: "100%" }}
+            transition={{ type: "spring", damping: 32, stiffness: 280 }}
+            className="fixed right-0 top-0 h-full w-full overflow-y-auto bg-surface shadow-[-8px_0_40px_rgba(12,14,18,0.18)] md:w-[60vw] md:max-w-[720px]"
           >
             <button
               onClick={onClose}
               aria-label="閉じる"
-              className="absolute top-4 right-4 z-50 p-2 rounded-full bg-[var(--gray)] hover:bg-[var(--gray)]/80 transition-colors"
+              className="absolute right-4 top-4 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-bg/80 text-ink backdrop-blur transition-colors hover:text-orange"
             >
-              <X className="w-6 h-6 text-[var(--black)]" />
+              <X className="h-5 w-5" />
             </button>
 
-            <div className="relative w-full aspect-video bg-[var(--gray)]">
+            <div className="relative aspect-video w-full bg-line">
               {project.imageUrl && (
                 <Image
                   src={project.imageUrl}
                   alt={project.title}
                   fill
                   className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 896px"
+                  sizes="(max-width: 768px) 100vw, 720px"
                 />
               )}
             </div>
 
-            <div className="p-6 md:p-8">
-              <div className="mb-4">
-                <h2 className="font-[family-name:var(--font-saira)] font-semibold text-2xl text-[var(--black)] mb-3">
-                  {project.title}
-                </h2>
-                <div className="flex flex-wrap gap-2">
-                  {project.labels.map((label) => (
-                    <span
-                      key={label}
-                      className="font-[family-name:var(--font-saira)] text-sm text-[var(--black)] opacity-70"
-                    >
-                      #{label}
-                    </span>
-                  ))}
-                </div>
+            <div className="p-6 md:p-10">
+              {project.date && (
+                <span className="font-mono text-[11px] tracking-[0.1em] text-ink-sub/70">
+                  {project.date}
+                </span>
+              )}
+              <h2 className="mt-2 font-[family-name:var(--font-saira)] text-2xl font-semibold text-ink md:text-3xl">
+                {project.title}
+              </h2>
+
+              <div className="mt-3 flex flex-wrap gap-2">
+                {project.labels.map((label) => (
+                  <span
+                    key={label}
+                    className="rounded-full bg-line px-2.5 py-0.5 font-[family-name:var(--font-saira)] text-xs text-ink-sub"
+                  >
+                    #{label}
+                  </span>
+                ))}
               </div>
 
-              <div className="mb-4">
-                <h3 className="font-[family-name:var(--font-saira)] font-semibold text-lg text-[var(--black)] mb-2">
-                  概要
+              <div className="mt-8">
+                <h3 className="font-[family-name:var(--font-saira)] text-sm font-medium tracking-[0.08em] text-ink-sub">
+                  OVERVIEW
                 </h3>
-                <p className="font-[family-name:var(--font-saira)] text-sm text-[var(--black)] leading-relaxed">
+                <p className="mt-2 font-[family-name:var(--font-noto)] text-[15px] leading-[1.9] text-ink">
                   {project.description}
                 </p>
               </div>
 
-              <div className="mb-6">
-                <h3 className="font-[family-name:var(--font-saira)] font-semibold text-lg text-[var(--black)] mb-2">
-                  詳細
-                </h3>
-                <p className="font-[family-name:var(--font-saira)] text-sm text-[var(--black)] leading-relaxed">
-                  {project.detail}
-                </p>
-              </div>
+              {project.detail && (
+                <div className="mt-6">
+                  <h3 className="font-[family-name:var(--font-saira)] text-sm font-medium tracking-[0.08em] text-ink-sub">
+                    DETAIL
+                  </h3>
+                  <p className="mt-2 font-[family-name:var(--font-noto)] text-[15px] leading-[1.9] text-ink">
+                    {project.detail}
+                  </p>
+                </div>
+              )}
 
-              <div className="flex gap-4">
-                {project.url && (
-                  <a
-                    href={project.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-6 py-3 bg-[var(--black)] text-white font-[family-name:var(--font-saira)] font-semibold flex items-center gap-2 hover:opacity-90 transition-opacity"
-                  >
-                    <ExternalLink className="w-4 h-4" />
-                    外部リンク
-                  </a>
-                )}
-                <button
-                  onClick={onClose}
-                  className="px-6 py-3 bg-[var(--gray)] text-[var(--black)] font-[family-name:var(--font-saira)] hover:opacity-80 transition-opacity cursor-pointer"
+              {project.url && (
+                <a
+                  href={project.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-10 inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 font-[family-name:var(--font-saira)] text-sm font-medium text-white transition-colors hover:bg-orange"
                 >
-                  閉じる
-                </button>
-              </div>
+                  <ExternalLink className="h-4 w-4" />
+                  Visit site
+                </a>
+              )}
             </div>
-          </motion.div>
+          </motion.aside>
         </motion.div>
       )}
     </AnimatePresence>
