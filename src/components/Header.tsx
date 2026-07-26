@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 const navItems = [
   { label: "Products", href: "#products" },
@@ -33,15 +34,15 @@ export default function Header() {
       }`}
     >
       <div className="mx-auto flex max-w-[1200px] items-center justify-between px-5 py-4 md:px-8">
-        <a href="#top" className="flex items-center gap-2">
-          <span
-            className={`font-[family-name:var(--font-saira)] font-semibold text-lg transition-colors duration-300 ${
-              scrolled ? "text-ink" : "text-white"
-            }`}
-          >
-            raihara3
-          </span>
-          <span className="h-2 w-2 rounded-full bg-orange" />
+        <a href="#top" aria-label="raihara3" className="flex items-center">
+          <Image
+            src="/logo.png"
+            alt="raihara3"
+            width={36}
+            height={36}
+            className="h-9 w-9 object-contain"
+            priority
+          />
         </a>
 
         <nav className="flex items-center gap-5 md:gap-7">

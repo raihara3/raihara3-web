@@ -8,12 +8,7 @@ import Reveal from "./Reveal";
 const domains = [
   {
     name: "Frontend",
-    skills: ["React", "TypeScript", "TensorFlow.js"],
-  },
-  {
-    name: "Spatial",
-    note: "XR & 3D",
-    skills: ["Three.js", "WebXR", "Blender", "Unity"],
+    skills: ["React", "TypeScript", "Three.js", "TensorFlow.js"],
   },
   {
     name: "Design & Product",
@@ -37,6 +32,10 @@ const domains = [
       "Amazon DynamoDB",
     ],
   },
+  {
+    name: "Other",
+    skills: ["WebXR", "Blender", "Unity"],
+  },
 ];
 
 export default function SkillsSection() {
@@ -46,7 +45,7 @@ export default function SkillsSection() {
         <SectionHeader title="SKILLS" subtitle="できること" />
 
         <p className="mt-8 text-center font-[family-name:var(--font-saira)] text-lg font-medium text-ink">
-          Frontend Engineer / WebXR Engineer
+          Frontend Engineer / PM / Design
         </p>
 
         <Reveal className="mt-14 border-b border-line">
@@ -59,11 +58,6 @@ export default function SkillsSection() {
                 <h3 className="font-[family-name:var(--font-saira)] text-xl font-medium text-ink">
                   {domain.name}
                 </h3>
-                {domain.note && (
-                  <span className="font-[family-name:var(--font-noto)] text-xs text-ink-sub">
-                    {domain.note}
-                  </span>
-                )}
               </div>
 
               <div className="flex flex-wrap gap-2">

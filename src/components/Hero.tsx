@@ -1,6 +1,12 @@
 import Image from "next/image";
 import Starfield from "./Starfield";
+import ProfileBio from "./ProfileBio";
 import { socials } from "@/lib/socials";
+
+// Newlines (\n) are rendered as line breaks (the bio uses `white-space: pre-line`).
+const bio = `フロントエンド・WebXR・3D を軸に、作りたいモノを作るのに必要な技術で遊んでいます。
+技術とデザインのあいだを行き来しながら、使う人にとって心地よい体験を形にすることを大切にしています。
+個人開発やプロトタイピングを通じて、新しい表現やインタラクションを日々模索しています。`;
 
 export default function Hero() {
   return (
@@ -14,7 +20,6 @@ export default function Hero() {
       <div className="relative z-10 mx-auto max-w-[680px] px-5 text-center">
         <div className="-mt-[70px] flex justify-center md:-mt-[88px]">
           <div className="relative h-[140px] w-[140px] overflow-hidden rounded-full border-[6px] border-bg bg-bg shadow-[0_8px_30px_rgba(12,14,18,0.18)] md:h-[176px] md:w-[176px]">
-            {/* TODO: replace /profile.jpg with the real portrait photo. */}
             <Image
               src="/profile.jpg"
               alt="raihara3 (Ryu Aihara)"
@@ -54,9 +59,7 @@ export default function Hero() {
           ))}
         </div>
 
-        <p className="mx-auto mt-8 max-w-[520px] font-[family-name:var(--font-noto)] text-[15px] leading-[1.9] text-ink-sub">
-          フロントエンド・WebXR・3D を軸に、作りたいモノを作るのに必要な技術で遊んでいます。
-        </p>
+        <ProfileBio text={bio} />
       </div>
     </section>
   );

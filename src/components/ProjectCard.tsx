@@ -14,8 +14,6 @@ export default function ProjectCard({
   project,
   onCardClick,
 }: ProjectCardProps) {
-  const projectNumber = String(project.number).padStart(3, "0");
-
   return (
     <div
       className="group flex cursor-pointer flex-col transition-transform duration-300 hover:-translate-y-[3px]"
@@ -29,7 +27,7 @@ export default function ProjectCard({
         }
       }}
     >
-      <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[14px] bg-line transition-shadow duration-300 group-hover:shadow-[0_12px_36px_rgba(20,20,20,0.08)]">
+      <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[8px] bg-line transition-shadow duration-300 group-hover:shadow-[0_12px_36px_rgba(20,20,20,0.08)]">
         {project.imageUrl && (
           <Image
             src={project.imageUrl}
@@ -42,14 +40,11 @@ export default function ProjectCard({
       </div>
 
       <div className="mt-4 flex flex-col items-start">
-        {/* The catalog number is the modern remnant of the "Launch Station" brand. */}
-        <span
-          className={`font-mono text-[11px] tracking-[0.15em] ${
-            project.featured ? "text-orange" : "text-ink-sub/70"
-          }`}
-        >
-          PLN-{projectNumber}
-        </span>
+        {project.date && (
+          <span className="font-mono text-[11px] tracking-[0.1em] text-ink-sub/70">
+            {project.date}
+          </span>
+        )}
 
         <h3 className="mt-1.5 font-[family-name:var(--font-saira)] text-lg font-medium leading-snug text-ink">
           {project.title}

@@ -103,6 +103,10 @@ export async function getProjects(): Promise<Project[]> {
         url: sanitizeUrl(content.url),
         imageUrl: content.thumbnail?.url ?? content.images?.[0]?.url ?? "",
         featured: content.featured ?? false,
+        // Take the date part only and use dots, e.g. "2026-02-05..." -> "2026.02.05".
+        date: content.publication_date
+          ? content.publication_date.slice(0, 10).replace(/-/g, ".")
+          : "",
       }))
   );
 }

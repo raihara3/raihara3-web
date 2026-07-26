@@ -6,7 +6,7 @@ export default function Footer() {
           raihara3
         </span>
         <span className="font-[family-name:var(--font-saira)] text-xs text-ink-sub">
-          &copy; {new Date().getFullYear()} raihara3. All rights reserved.
+          &copy; 2025 raihara3. All rights reserved.
         </span>
       </div>
     </footer>

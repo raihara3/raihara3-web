@@ -3,6 +3,8 @@ import SectionHeader from "./SectionHeader";
 import Reveal from "./Reveal";
 import { socials } from "@/lib/socials";
 
+const contactSocials = socials.filter((social) => social.name === "X");
+
 export default function ContactSection() {
   return (
     <section id="contact" className="py-24 md:py-36">
@@ -10,11 +12,11 @@ export default function ContactSection() {
         <SectionHeader title="CONTACT" subtitle="お問い合わせ" />
 
         <p className="mt-8 text-center font-[family-name:var(--font-noto)] text-[15px] leading-[1.9] text-ink-sub">
-          お仕事のご相談やご連絡は、以下の SNS からお気軽にどうぞ。
+          お仕事のご相談やご連絡は、X からお気軽にどうぞ。
         </p>
 
         <Reveal className="mt-12 flex flex-col gap-3">
-          {socials.map(({ name, url, Icon }) => (
+          {contactSocials.map(({ name, url, Icon }) => (
             <a
               key={name}
               href={url}

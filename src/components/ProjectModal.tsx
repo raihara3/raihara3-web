@@ -38,10 +38,6 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
     }
   };
 
-  const projectNumber = project
-    ? String(project.number).padStart(3, "0")
-    : "";
-
   return (
     <AnimatePresence>
       {project && (
@@ -84,9 +80,11 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
             </div>
 
             <div className="p-6 md:p-10">
-              <span className="font-mono text-[11px] tracking-[0.15em] text-ink-sub/70">
-                PLN-{projectNumber}
-              </span>
+              {project.date && (
+                <span className="font-mono text-[11px] tracking-[0.1em] text-ink-sub/70">
+                  {project.date}
+                </span>
+              )}
               <h2 className="mt-2 font-[family-name:var(--font-saira)] text-2xl font-semibold text-ink md:text-3xl">
                 {project.title}
               </h2>
