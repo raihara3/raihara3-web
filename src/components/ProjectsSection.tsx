@@ -4,6 +4,7 @@ import { useState, useMemo } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import ProjectCard, { Project } from "./ProjectCard";
 import ProjectModal from "./ProjectModal";
+import SectionHeader from "./SectionHeader";
 
 interface ProjectsSectionProps {
   projects: Project[];
@@ -32,62 +33,51 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
     );
   }, [reversedProjects, selectedLabel]);
 
-  return (
-    <section id="products" className="py-12">
-      <div className="max-w-[1150px] mx-auto px-4 md:px-8">
-        <div className="flex flex-col gap-5 items-center">
-          <div className="bg-[var(--black)] px-[15px] flex items-center justify-center">
-            <h2 className="font-[family-name:var(--font-saira)] font-semibold text-[26px] text-white text-center leading-normal">
-              Products
-            </h2>
-          </div>
+  const filters = [null, ...allLabels];
 
-          <div className="flex flex-wrap gap-[15px] items-center justify-center text-base text-center">
-            <button
-              onClick={() => setSelectedLabel(null)}
-              className={`font-[family-name:var(--font-saira)] underline ${
-                selectedLabel === null
-                  ? "font-semibold text-[var(--orange)]"
-                  : "font-normal text-[var(--black)]"
-              }`}
-            >
-              #All
-            </button>
-            {allLabels.map((label) => (
+  return (
+    <section id="products" className="py-24 md:py-36">
+      <div className="mx-auto max-w-[1200px] px-5 md:px-8">
+        <SectionHeader title="PRODUCTS" subtitle="作っているもの" />
+
+        <div className="mt-10 flex flex-wrap items-center justify-center gap-2">
+          {filters.map((label) => {
+            const isSelected = selectedLabel === label;
+            return (
               <button
-                key={label}
+                key={label ?? "all"}
                 onClick={() => setSelectedLabel(label)}
-                className={`font-[family-name:var(--font-saira)] underline ${
-                  selectedLabel === label
-                    ? "font-semibold text-[var(--orange)]"
-                    : "font-normal text-[var(--black)]"
+                className={`rounded-full px-4 py-1.5 font-[family-name:var(--font-saira)] text-sm transition-colors duration-200 ${
+                  isSelected
+                    ? "bg-orange text-white"
+                    : "border border-line text-ink-sub hover:text-ink"
                 }`}
               >
-                #{label}
+                #{label ?? "All"}
               </button>
-            ))}
-          </div>
+            );
+          })}
+        </div>
 
-          <div className="flex flex-wrap gap-[17px] items-start w-full">
-            <AnimatePresence mode="popLayout">
-              {filteredProjects.map((project) => (
-                <motion.div
-                  key={project.id}
-                  layout
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ duration: 0.2 }}
-                  className="w-full sm:w-[calc(50%-9px)] lg:w-[350px]"
-                >
-                  <ProjectCard
-                    project={project}
-                    onCardClick={setSelectedProject}
-                  />
-                </motion.div>
-              ))}
-            </AnimatePresence>
-          </div>
+        <div className="mt-12 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
+          <AnimatePresence mode="popLayout">
+            {filteredProjects.map((project) => (
+              <motion.div
+                key={project.id}
+                layout
+                initial={{ opacity: 0, scale: 0.97 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.97 }}
+                transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+                className={project.featured ? "sm:col-span-2 lg:col-span-2" : ""}
+              >
+                <ProjectCard
+                  project={project}
+                  onCardClick={setSelectedProject}
+                />
+              </motion.div>
+            ))}
+          </AnimatePresence>
         </div>
       </div>
 

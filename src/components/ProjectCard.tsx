@@ -10,33 +10,6 @@ interface ProjectCardProps {
   onCardClick: (project: Project) => void;
 }
 
-function FileTab({
-  label,
-  isFeatured,
-}: {
-  label: string;
-  isFeatured: boolean;
-}) {
-  return (
-    <div className="relative w-[100px] h-[26px] md:w-[115px] md:h-[30px] shrink-0">
-      <svg
-        className="absolute inset-0 w-full h-full"
-        viewBox="0 0 115 30"
-        fill={isFeatured ? "#FF4800" : "#ffffff"}
-        preserveAspectRatio="none"
-      >
-        <path
-          d="M3 0H112L115 30H0L3 0Z"
-          fill={isFeatured ? "#FF4800" : "#ffffff"}
-        />
-      </svg>
-      <span className="absolute inset-0 flex items-center justify-center font-[family-name:var(--font-saira)] font-semibold text-sm md:text-[20px] text-[var(--black)]">
-        {label}
-      </span>
-    </div>
-  );
-}
-
 export default function ProjectCard({
   project,
   onCardClick,
@@ -45,7 +18,7 @@ export default function ProjectCard({
 
   return (
     <div
-      className="flex flex-col items-start cursor-pointer w-full"
+      className="group flex cursor-pointer flex-col transition-transform duration-300 hover:-translate-y-[3px]"
       role="button"
       tabIndex={0}
       onClick={() => onCardClick(project)}
@@ -56,35 +29,40 @@ export default function ProjectCard({
         }
       }}
     >
-      <FileTab label={`PLN-${projectNumber}`} isFeatured={project.featured} />
+      <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[14px] bg-line transition-shadow duration-300 group-hover:shadow-[0_12px_36px_rgba(20,20,20,0.08)]">
+        {project.imageUrl && (
+          <Image
+            src={project.imageUrl}
+            alt={project.title}
+            fill
+            className="object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 380px"
+          />
+        )}
+      </div>
 
-      <div className="bg-white flex flex-col gap-[10px] items-start px-2 py-[9px] w-full">
-        <div className="relative bg-[var(--gray)] w-full aspect-[333/215]">
-          {project.imageUrl && (
-            <Image
-              src={project.imageUrl}
-              alt={project.title}
-              fill
-              className="object-cover"
-              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 350px"
-            />
-          )}
-        </div>
+      <div className="mt-4 flex flex-col items-start">
+        {/* The catalog number is the modern remnant of the "Launch Station" brand. */}
+        <span
+          className={`font-mono text-[11px] tracking-[0.15em] ${
+            project.featured ? "text-orange" : "text-ink-sub/70"
+          }`}
+        >
+          PLN-{projectNumber}
+        </span>
 
-        <div className="flex flex-col items-start text-sm text-[var(--black)] w-full">
-          <p className="font-[family-name:var(--font-saira)] font-semibold leading-normal">
-            {project.title}
-          </p>
-          <p className="font-[family-name:var(--font-saira)] font-normal leading-normal line-clamp-2">
-            {project.description}
-          </p>
-        </div>
+        <h3 className="mt-1.5 font-[family-name:var(--font-saira)] text-lg font-medium leading-snug text-ink">
+          {project.title}
+        </h3>
+        <p className="mt-1 font-[family-name:var(--font-noto)] text-sm leading-relaxed text-ink-sub line-clamp-2">
+          {project.description}
+        </p>
 
-        <div className="flex gap-[15px] items-center text-xs text-[var(--black)] w-full">
+        <div className="mt-3 flex flex-wrap gap-2">
           {project.labels.map((label) => (
             <span
               key={label}
-              className="font-[family-name:var(--font-saira)] font-normal opacity-70"
+              className="rounded-full bg-line px-2.5 py-0.5 font-[family-name:var(--font-saira)] text-xs text-ink-sub"
             >
               #{label}
             </span>
