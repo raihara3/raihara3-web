@@ -1,44 +1,30 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 
 interface ProfileBioProps {
   text: string;
 }
 
 /**
- * Profile bio that collapses to two lines and reveals the rest behind a "More"
- * toggle. The toggle only appears when the text actually overflows, so a short
- * bio stays clean while a longer one can be expanded.
+ * Profile bio that shows everything up to the first blank line by default, and
+ * reveals the rest behind a "More" toggle. Splitting on the blank line lets the
+ * author control exactly how much shows before expanding.
  */
 export default function ProfileBio({ text }: ProfileBioProps) {
-  const paragraphRef = useRef<HTMLParagraphElement>(null);
   const [expanded, setExpanded] = useState(false);
-  const [canExpand, setCanExpand] = useState(false);
 
-  useEffect(() => {
-    const measure = () => {
-      const element = paragraphRef.current;
-      if (!element || expanded) return;
-      setCanExpand(element.scrollHeight > element.clientHeight + 1);
-    };
-    measure();
-    window.addEventListener("resize", measure);
-    return () => window.removeEventListener("resize", measure);
-  }, [expanded, text]);
+  const separatorIndex = text.indexOf("\n\n");
+  const hasMore = separatorIndex !== -1;
+  const head = hasMore ? text.slice(0, separatorIndex) : text;
 
   return (
-    <div className="mx-auto mt-8 max-w-[520px]">
-      <p
-        ref={paragraphRef}
-        className={`whitespace-pre-line font-[family-name:var(--font-noto)] text-[15px] leading-[1.9] text-ink-sub ${
-          expanded ? "" : "line-clamp-2"
-        }`}
-      >
-        {text}
+    <div className="mx-auto mt-8 max-w-[750px]">
+      <p className="whitespace-pre-line font-[family-name:var(--font-noto)] text-[15px] leading-[1.9] text-ink-sub">
+        {expanded ? text : head}
       </p>
 
-      {(canExpand || expanded) && (
+      {hasMore && (
         <div className="mt-3 text-center">
           <button
             onClick={() => setExpanded((previous) => !previous)}

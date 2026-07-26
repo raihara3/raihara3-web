@@ -48,6 +48,12 @@ export default function SkillsSection() {
           Frontend Engineer / PM / Design
         </p>
 
+        <p className="mx-auto mt-5 max-w-[680px] text-center font-[family-name:var(--font-noto)] text-[15px] leading-[1.9] text-ink-sub">
+          デザイナー視点でのUI/UX設計から、React/Next.js/Three.jsを用いたフロントエンド実装までワンストップで手掛けます。
+          <br className="hidden md:block" />
+          開発進行やプロジェクトの牽引まで柔軟に対応し、アイデアを最短で形にします。
+        </p>
+
         <Reveal className="mt-14 border-b border-line">
           {domains.map((domain) => (
             <div

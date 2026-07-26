@@ -4,9 +4,13 @@ import ProfileBio from "./ProfileBio";
 import { socials } from "@/lib/socials";
 
 // Newlines (\n) are rendered as line breaks (the bio uses `white-space: pre-line`).
-const bio = `フロントエンド・WebXR・3D を軸に、作りたいモノを作るのに必要な技術で遊んでいます。
-技術とデザインのあいだを行き来しながら、使う人にとって心地よい体験を形にすることを大切にしています。
-個人開発やプロトタイピングを通じて、新しい表現やインタラクションを日々模索しています。`;
+const bio = `フロントエンド・WebXR・3D を軸に、作りたいモノを作るのに必要な技術を取り入れて遊んでいます。
+グラフィックデザイナーとクリエイティブディレクションを経て、”実際に使えるモノ”が作りたくエンジニアに転向しました。
+
+興味を持った3DCGやバックエンドにも少し触れており、経験領域の広さからPMもやります。
+
+エンジニアとして新しい技術に挑戦しながら「誰かのためになること」をするのを好みます。
+非効率なこと、面倒なことが嫌いなので身の回りの効率化に日々励んでいます。`;
 
 export default function Hero() {
   return (
@@ -17,7 +21,7 @@ export default function Hero() {
       </div>
 
       {/* Profile content, with the avatar straddling the banner edge. */}
-      <div className="relative z-10 mx-auto max-w-[680px] px-5 text-center">
+      <div className="relative z-10 mx-auto max-w-[750px] px-5 text-center">
         <div className="-mt-[70px] flex justify-center md:-mt-[88px]">
           <div className="relative h-[140px] w-[140px] overflow-hidden rounded-full border-[6px] border-bg bg-bg shadow-[0_8px_30px_rgba(12,14,18,0.18)] md:h-[176px] md:w-[176px]">
             <Image
@@ -31,15 +35,9 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="mt-6 flex items-center justify-center gap-3">
-          <h1 className="font-[family-name:var(--font-saira)] text-[clamp(44px,7vw,80px)] font-semibold leading-[0.95] tracking-[-0.01em] text-ink">
-            raihara3
-          </h1>
-          <span
-            className="h-2.5 w-2.5 rounded-full bg-orange"
-            aria-hidden="true"
-          />
-        </div>
+        <h1 className="mt-6 font-[family-name:var(--font-saira)] text-[clamp(44px,7vw,80px)] font-semibold leading-[0.95] tracking-[-0.01em] text-ink">
+          raihara3
+        </h1>
         <p className="mt-2 font-[family-name:var(--font-saira)] text-base font-medium tracking-[0.02em] text-ink-sub">
           Ryu Aihara
         </p>
