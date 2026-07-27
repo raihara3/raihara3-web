@@ -3,7 +3,10 @@ import SectionHeader from "./SectionHeader";
 import Reveal from "./Reveal";
 import { socials } from "@/lib/socials";
 
-const contactSocials = socials.filter((social) => social.name === "X");
+const contactNames = ["X", "Wantedly", "YOUTRUST"];
+const contactSocials = socials.filter((social) =>
+  contactNames.includes(social.name)
+);
 
 export default function ContactSection() {
   return (
@@ -12,7 +15,7 @@ export default function ContactSection() {
         <SectionHeader title="CONTACT" subtitle="お問い合わせ" />
 
         <p className="mt-8 text-center font-[family-name:var(--font-noto)] text-[15px] leading-[1.9] text-ink-sub">
-          お仕事のご相談やご連絡は、X でご連絡ください。
+          お仕事のご相談やご連絡は、SNS からご連絡ください。
         </p>
 
         <Reveal className="mt-12 flex flex-col gap-3">
@@ -24,7 +27,12 @@ export default function ContactSection() {
               rel="noopener noreferrer"
               className="group flex items-center justify-between rounded-2xl border border-line bg-surface px-6 py-5 transition-all duration-200 hover:border-orange hover:shadow-[0_12px_36px_rgba(20,20,20,0.08)]"
             >
-              <Icon className="h-5 w-5 text-ink transition-colors duration-200 group-hover:text-orange" />
+              <span className="flex items-center gap-4">
+                <Icon className="h-5 w-5 text-ink transition-colors duration-200 group-hover:text-orange" />
+                <span className="font-[family-name:var(--font-saira)] text-lg font-medium text-ink">
+                  {name}
+                </span>
+              </span>
               <ArrowUpRight className="h-5 w-5 text-ink-sub transition-colors duration-200 group-hover:text-orange" />
             </a>
           ))}

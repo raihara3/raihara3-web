@@ -3,7 +3,6 @@
 import { useState, useMemo } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import ProjectCard, { Project } from "./ProjectCard";
-import FeaturedCard from "./FeaturedCard";
 import ProjectModal from "./ProjectModal";
 import SectionHeader from "./SectionHeader";
 
@@ -27,11 +26,6 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
     return [...projects].reverse();
   }, [projects]);
 
-  // Featured works shown right under the profile (newest first, capped at 4).
-  const featuredProjects = useMemo(() => {
-    return reversedProjects.filter((project) => project.featured).slice(0, 4);
-  }, [reversedProjects]);
-
   const filteredProjects = useMemo(() => {
     if (!selectedLabel) return reversedProjects;
     return reversedProjects.filter((project) =>
@@ -43,23 +37,6 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
 
   return (
     <>
-      {featuredProjects.length > 0 && (
-        <section
-          id="featured"
-          className="mx-auto max-w-[940px] px-5 pt-12 md:px-8 md:pt-16"
-        >
-          <div className="flex flex-wrap justify-center gap-x-8 gap-y-12">
-            {featuredProjects.map((project) => (
-              <FeaturedCard
-                key={project.id}
-                project={project}
-                onCardClick={setSelectedProject}
-              />
-            ))}
-          </div>
-        </section>
-      )}
-
       <section id="products" className="py-24 md:py-36">
         <div className="mx-auto max-w-[1200px] px-5 md:px-8">
           <SectionHeader title="PRODUCTS" subtitle="作っているもの" />
