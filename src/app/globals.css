@@ -22,6 +22,18 @@
   --font-noto: var(--font-noto-sans-jp);
 }
 
+html {
+  scroll-behavior: smooth;
+  /* Offset in-page anchors so targets clear the fixed header. */
+  scroll-padding-top: 80px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
 body {
   background: var(--bg);
   color: var(--ink);

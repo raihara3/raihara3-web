@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 
 const navItems = [
+  { label: "Work", href: "#work" },
   { label: "Products", href: "#products" },
   { label: "Skills", href: "#skills" },
   { label: "Contact", href: "#contact" },
