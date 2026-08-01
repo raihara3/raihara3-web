@@ -26,7 +26,7 @@ export default function Hero() {
           <div className="relative h-[140px] w-[140px] overflow-hidden rounded-full border-[6px] border-bg bg-bg shadow-[0_8px_30px_rgba(12,14,18,0.18)] md:h-[176px] md:w-[176px]">
             <Image
               src="/profile.jpg"
-              alt="raihara3 (Ryu Aihara)"
+              alt="raihara3"
               fill
               sizes="176px"
               className="object-cover"
@@ -38,9 +38,6 @@ export default function Hero() {
         <h1 className="mt-6 font-[family-name:var(--font-saira)] text-[clamp(44px,7vw,80px)] font-semibold leading-[0.95] tracking-[-0.01em] text-ink">
           raihara3
         </h1>
-        <p className="mt-2 font-[family-name:var(--font-saira)] text-base font-medium tracking-[0.02em] text-ink-sub">
-          Ryu Aihara
-        </p>
 
         <div className="mt-6 flex items-center justify-center gap-3">
           {socials.map(({ name, url, Icon }) => (
