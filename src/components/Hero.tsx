@@ -25,7 +25,7 @@ export default function Hero() {
         <div className="-mt-[70px] flex justify-center md:-mt-[88px]">
           <div className="relative h-[140px] w-[140px] overflow-hidden rounded-full border-[6px] border-bg bg-bg shadow-[0_8px_30px_rgba(12,14,18,0.18)] md:h-[176px] md:w-[176px]">
             <Image
-              src="/profile.jpg"
+              src="/profile.png"
               alt="raihara3"
               fill
               sizes="176px"
