@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     siteName: "raihara3's Launch Station",
     images: [
       {
-        url: "/ogp.jpg",
+        url: "/ogp.png",
         width: 1200,
         height: 630,
         alt: "raihara3's Launch Station",
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     title: "raihara3's Launch Station",
     description:
       "raihara3のサイト。フロントエンド、WebXR、3Dなどの制作物を紹介しています。",
-    images: ["/ogp.jpg"],
+    images: ["/ogp.png"],
     creator: "@raihara3",
   },
 };
